@@ -51,6 +51,8 @@ class ViewController: UIViewController {
         dropDownTo.selectedIndex = 0
         self.dropDownTo.text = dropDownTo.optionArray[0]
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         dropDownTo.didSelect { selectedText, index, id in
             print("Selected String: \(selectedText) \n index: \(index)")
             self.dropDownTo.hideList()
@@ -77,6 +79,10 @@ class ViewController: UIViewController {
         task.resume()
     }
     
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     @IBAction func convertButtonPressed(_ sender: Any) {
         
         
